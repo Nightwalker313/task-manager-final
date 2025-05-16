@@ -1,50 +1,44 @@
-# Task Management Web Application
+Task Manager App - README Instructions
+Date: May 16, 2025
+Author: Amen Ziyad
+ 
+-What the App Does
 
-A simple yet functional Django-based web app that enables users to manage their personal or professional tasks. Users can create, view, update, and delete tasks with details such as title, description, due date, and priority level. Each user has their own account and private task list.
+This is a personal Task Management Web Application built with Django. It allows users to:
+- Register and securely log in
+- Create, view, update, and delete their personal tasks
+- Track due dates and prioritize tasks
+- Stay organized through a clean, user-friendly interface
 
----
+ How to Run It
 
-# Features Implemented (Phase 3)
+1. Clone the repository:
+   git clone https://github.com/Nightwalker313/task-manager-final.git
+   cd task-manager-final
 
--  User Registration and Login
-- Task Creation
--  Task Listing
--  Task Update
--  Task Deletion
--  Secure access: Users can only see and modify their own tasks
+2. Create and activate a virtual environment:
+   python -m venv venv
+   venv\Scripts\activate   (on Windows)
 
-This reflects **at least 40%** of the final system functionality.
+3. Install the requirements:
+   pip install -r requirements.txt
 
----
+4. Run the Django server:
+   python manage.py runserver
 
-# Use Cases
+-How to Create a Superuser (Admin Account)
 
-# User Management
-- Sign up, login, and logout functionality
-- Secure session management
+Before logging in, you'll need to create a superuser account by running:
+   python manage.py createsuperuser
 
-# Task Management
-- Create tasks with title, description, due date, and priority
-- View a list of tasks
-- Edit and delete existing tasks
-- (Future) Sort/filter tasks by due date, priority, and status
+Follow the prompts to enter a username, email, and password.
 
----
+ How to Log In
 
-# Tech Stack
+1. Start the server with: python manage.py runserver
+2. Visit: http://127.0.0.1:8000/login/
+3. Enter your superuser credentials
+4. You’ll be redirected to your personal task dashboard
 
-- **Framework**: Django 5.x
-- **Frontend**: HTML5, Bootstrap (via Django templates)
-- **Database**: SQLite (default Django DB)
-- **Authentication**: Django's built-in auth system
-- **Version Control**: Git + GitHub
 
----
-
-# Setup Instructions
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Nightwalker313/Django-App.git
-   cd Django-App
 
