@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: task-manager-final
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn taskmanager.wsgi
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.3
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: "0.0.0.0,127.0.0.1,.onrender.com"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: taskmanager-db
+          property: connectionString
+
+databases:
+  - name: taskmanager-db
+    databaseName: taskmanager
+    user: taskmanager
+    plan: free
