@@ -1,11 +1,23 @@
 {% extends "tasks/base.html" %}
 
 {% block content %}
-  <h2>Delete Task</h2>
-  <p>Are you sure you want to delete "{{ task.title }}"?</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Yes, Delete</button>
-    <a href="{% url 'task_list' %}">Cancel</a>
-  </form>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-danger" style="max-width: 500px; width: 100%;">
+        <div class="card-header bg-danger text-white text-center">
+            <h4>⚠ Confirm Deletion</h4>
+        </div>
+        <div class="card-body text-center">
+            <p class="lead">
+                Are you sure you want to delete the task:
+                <strong class="text-danger">"{{ task.title }}"</strong>?
+            </p>
+            <p>This action <strong>cannot</strong> be undone.</p>
+            <form method="post" class="mt-3">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
+                <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,10 +1,66 @@
 {% extends "tasks/base.html" %}
+{% load widget_tweaks %}
 
 {% block content %}
-  <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Task</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-primary" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>
+                {% if form.instance.pk %}✏ Edit Task{% else %}➕ Add Task{% endif %}
+            </h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                
+                <!-- Title -->
+                <div class="mb-3">
+                    {{ form.title.label_tag }}
+                    {{ form.title|add_class:"form-control" }}
+                </div>
+                
+                <!-- Description (full width textarea) -->
+                <div class="mb-3">
+                    {{ form.description.label_tag }}
+                    {{ form.description|add_class:"form-control" }}
+                </div>
+                
+                <!-- Due Date -->
+                <div class="mb-3">
+                    {{ form.due_date.label_tag }}
+                    {{ form.due_date|add_class:"form-control" }}
+                </div>
+                
+                <!-- Priority -->
+                <div class="mb-3">
+                    {{ form.priority.label_tag }}
+                    {{ form.priority|add_class:"form-select" }}
+                </div>
+                
+                <!-- Category -->
+                <div class="mb-3">
+                    {{ form.category.label_tag }}
+                    {{ form.category|add_class:"form-select" }}
+                </div>
+                
+                <!-- Completed checkbox -->
+                <div class="form-check mb-3">
+                    {{ form.completed|add_class:"form-check-input" }}
+                    {{ form.completed.label_tag }}
+                </div>
+                
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">
+                        {% if form.instance.pk %}Save Changes{% else %}Add Task{% endif %}
+                    </button>
+                    <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add this filter if not already installed -->
+{% load widget_tweaks %}
 {% endblock %}

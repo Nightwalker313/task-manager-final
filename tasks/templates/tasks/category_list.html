@@ -1,0 +1,15 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Your Categories</h2>
+    <ul class="list-group">
+        {% for category in categories %}
+            <li class="list-group-item">{{ category.name }}</li>
+        {% empty %}
+            <li class="list-group-item">No categories yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'task_list' %}" class="btn btn-primary mt-3">Back to Tasks</a>
+</div>
+{% endblock %}
